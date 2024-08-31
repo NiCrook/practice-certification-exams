@@ -1,0 +1,6 @@
+{
+  "terraform": {
+    "duration": 60,
+    "questions": []
+  }
+}
