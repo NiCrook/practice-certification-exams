@@ -20,40 +20,31 @@ def mock_input(inputs):
 
 
 class TestQuestionHandlers(TestCase):
-
     def test_handle_multiple_choice(self):
         question = {
             'question': 'What is the capital of France?',
             'type': 'multiple_choice',
-            'options': {
-                'a': 'Paris',
-                'b': 'London',
-                'c': 'Rome'
-            },
-            'answer': 'a'
+            'options': ['Paris', 'London', 'Rome'],
+            'answer': 'Paris'
         }
 
-        inputs = ['a']
-        with patch('builtins.input', side_effect=mock_input(inputs)):
+        user_input = 1
+        with patch('builtins.input', return_value=user_input):
             answer = handle_multiple_choice(question)
-            self.assertEqual(answer, 'a')
+            self.assertEqual(answer, 'Paris')
 
     def test_handle_multiple_selection(self):
         question = {
             'question': 'Select all the programming languages:',
             'type': 'multiple_selection',
-            'options': {
-                'a': 'Python',
-                'b': 'Java',
-                'c': 'HTML'
-            },
-            'answers': ['a', 'b']
+            'options': ['Python', 'Java', 'English'],
+            'answers': ['Python', 'Java']
         }
 
-        inputs = ['a, b']
-        with patch('builtins.input', side_effect=mock_input(inputs)):
+        user_input = ["1, 2"]
+        with patch('builtins.input', side_effect=mock_input(user_input)):
             answers = handle_multiple_selection(question)
-            self.assertEqual(answers, ['a', 'b'])
+            self.assertEqual(answers, ['Python', 'Java'])
 
     def test_handle_true_false(self):
         question = {
@@ -62,10 +53,10 @@ class TestQuestionHandlers(TestCase):
             'answer': 'true'
         }
 
-        inputs = ['true']
-        with patch('builtins.input', side_effect=mock_input(inputs)):
+        user_input = ['true']
+        with patch('builtins.input', side_effect=mock_input(user_input)):
             answer = handle_true_false(question)
-            self.assertEqual(answer, 'true')
+            self.assertEqual(answer, 'True')
 
     def test_handle_fill_in_the_blank(self):
         question = {
@@ -74,8 +65,8 @@ class TestQuestionHandlers(TestCase):
             'answer': 'Code'
         }
 
-        inputs = ['Code']
-        with patch('builtins.input', side_effect=mock_input(inputs)):
+        user_input = ['Code']
+        with patch('builtins.input', side_effect=mock_input(user_input)):
             answer = handle_fill_in_the_blank(question)
             self.assertEqual(answer, 'Code')
 
