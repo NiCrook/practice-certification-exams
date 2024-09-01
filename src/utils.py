@@ -6,10 +6,21 @@ def handle_multiple_choice(question) -> str:
     for key, option in question_dict.items():
         print(f"{key}: {option}")
 
-    answer = input("Select an answer: ")
-    answer = question_dict[int(answer)]
+    answer = None
+    question_answered = False
 
-    return answer
+    while not question_answered:
+        try:
+            answer = input("Select an answer: ")
+            answer = int(answer)
+            if answer in question_dict:
+                question_answered = True
+            else:
+                print("Invalid selection. Please enter a number corresponding to one of the options.")
+        except ValueError:
+            print("Invalid selection. Please enter a number corresponding to one of the options.")
+
+    return question_dict[answer]
 
 
 def handle_multiple_selection(question: dict) -> list:
@@ -20,7 +31,7 @@ def handle_multiple_selection(question: dict) -> list:
     for key, option in question_dict.items():
         print(f'{key}: {option}')
 
-    answers = input("Select answers (comma-separated): ").strip().split(', ')
+    answers = input('Select answer (comma-separated): ').replace(" ", "").split(',')
     mapped_answers = []
     for answer in answers:
         mapped_answers.append(question_dict[int(answer)])
