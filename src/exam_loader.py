@@ -5,7 +5,7 @@ from yaml import safe_load as yaml_load
 EXAMS_DIR = '../exams'
 
 
-def load_exam(exam_name):
+def load_exam(exam_name: str):
     # Construct the file paths
     json_path = path.join(EXAMS_DIR, f"{exam_name}.json")
     yaml_path = path.join(EXAMS_DIR, f"{exam_name}.yaml")
