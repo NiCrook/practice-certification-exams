@@ -1,6 +1,231 @@
 {
-  "terraform": {
-    "duration": 60,
-    "questions": []
-  }
+  "time_duration": 3600,
+  "question_duration": 57,
+  "questions": [
+    {
+      "answer": "True",
+      "question": "Terraform can run on Windows or Linux, but it requires a Server version of the Windows operating system.",
+      "type": "true_false"
+    },
+    {
+      "answer": "tree",
+      "options": ["list", "map", "tree", "set"],
+      "question": "Which of the following is not a valid Terraform collection type?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "When you want to force Terraform to destroy and recreate a resource on the next apply.",
+      "options": [
+        "When you want to force Terraform to destroy a resource on the next apply.",
+        "When you want to force Terraform to destroy and recreate a resource on the next apply.",
+        "When you want Terraform to ignore a resource on the next apply.",
+        "When you want Terraform to destroy all the infrastructure in your workspace."
+      ],
+      "question": "When you want to force Terraform to destroy and recreate a resource on the next apply.",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "remote-exec",
+      "options": ["remote-exec", "null-exec", "local-exec", "file"],
+      "question": "Which provisioner invokes a process on the resource created by Terraform?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "True",
+      "question": "Setting the TF_LOG environment variable to DEBUG causes debug messages to be logged into syslog.",
+      "type": "true_false"
+    },
+    {
+      "answer": "element(aws_instance.web, 2)",
+      "options": [
+        "aws_instance.web[1].name",
+        "aws_instance.web[1]",
+        "element(aws_instance.web, 2)",
+        "aws_instance.web[2].name",
+        "aws_instance.web.*.name"
+      ],
+      "question": "How would you reference the 'name' value of the second instance of this fictitious resource?\nresource \"aws_instance\" \"web\" {\n\tcount = 2\n\tname = \"terraform-${count.index}\"\n}",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "The ability to restrict modules to members of Terraform Cloud or Enterprise organizations.",
+      "options": [
+        "The ability to share modules with public Terraform users and members of Terraform Enterprise Organizations.",
+        "The ability to restrict modules to members of Terraform Cloud or Enterprise organizations.",
+        "The ability to tab modules by version or release.",
+        "The ability to share modules publicly with any user of Terraform."
+      ],
+      "question": "What value does the Terraform Cloud/Terraform Enterprise private module registry provide over the public Terraform Module Registry?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "False",
+      "question": "Terraform and Terraform providers must use the same major version number in a single configuration.",
+      "type": "true_false"
+    },
+    {
+      "answer": [
+    "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply.",
+    "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in the current state file."
+        ],
+      "options": [
+        "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply.",
+        "When a change is made to the resources via the Azure Cloud Console, the current state file will not be updated.",
+        "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in a new state file.",
+        "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in the current state file."
+      ],
+      "question": "When using Terraform to deploy resources into Azure, which scenarios are true regarding state files? (Choose two.)",
+      "type": "multiple_selection"
+    },
+    {
+      "answer": "None of the above",
+      "options": [
+        "Required input variables",
+        "Optional inputs variables and default values",
+        "Outputs",
+        "All of the above",
+        "None of the above"
+      ],
+      "question": "What information does the public Terraform Module Registry automatically expose about published modules?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "Declare a none_count input variable for child module",
+      "option": [
+        "Add node_count = var.node_count",
+        "Declare the variable in a terraform.tfvars file",
+        "Declare a node_count input variable for child module",
+        "Nothing, child modules inherit variables of parent module"
+      ],
+      "question": "You have declared an input variable called environment in your parent module. What must you do to pass the value to a child module in the configuration?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "Run terraform output ip_address to view the result",
+      "options": [
+        "Run terraform output ip_address to view the result",
+        "In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file",
+        "Run terraform state list to find the name of the resource, then terraform state show to find the attribute including public IP address",
+        "Run terraform destroy then terraform apply and look for the IP address in stdout"
+      ],
+      "question": "You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code. What is the best method to quickly find the IP address of the resource you deployed?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "With two spaces",
+      "options": [
+        "With four spaces",
+        "With a tab",
+        "With three spaces",
+        "With two spaces"
+      ],
+      "question": "When writing Terraform code that adheres to the Terraform style convention, how would you properly indent each nesting level compared to the one above it?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "Modules stored on the public Terraform Module Registry do not support versioning",
+      "options": [
+        "Modules stored on the public Terraform Module Registry do not support versioning",
+        "Append ?ref=v1.0.0 argument to the source path",
+        "Add version = \"1.0.0\" attribute to the module block",
+        "Nothing. C Modules stored stored on the public Terraform Module Registry always default to version 1.0.0"
+      ],
+      "question": "When using a module block to reference a module stored on the public Terraform Module Registry such as:\nmodule \"consule\" {\n\tsource = \"hashicorp/consule/aws\"\n}\n\nHow do you specify version 1.0.0?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "True",
+      "question": "In Terraform 0.13 and above, outside of the required_providers block, Terraform configurations always refer to providers by their local names.",
+      "type": "true_false"
+    },
+    {
+      "answer": "False",
+      "question": "Terraform requires the Go runtime as a prerequisite for installation",
+      "type": "true_false"
+    },
+    {
+      "answer": "In the terraform.tfstate file",
+      "options": [
+        "In the /tmp directory",
+        "In the terraform.tfvars file",
+        "In the terraform.tfstate file",
+        "In the user's .terraformrc file"
+      ],
+      "question": "Where does the Terraform local backend store its state?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "None of the above",
+      "options": [
+        "Immediately",
+        "However long it takes the resource provider to fulfill the request",
+        "After updating the state file",
+        "Based on the value provided to the -refresh command line argument",
+        "None of the above"
+      ],
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
+      "options": [
+        "Providers can be written by individuals",
+        "Providers can be maintained by a community of users",
+        "Some providers are maintained by HashiCorp",
+        "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
+        "None of the above"
+      ],
+      "question": "Which of the following is not true of Terraform providers?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": [
+      ],
+      "options": [
+        "Provision new VMs using Terraform with the same VM names",
+        "Use the terraform import command for the existing VMs",
+        "Write terraform configuration for the existing VMs",
+        "Run the terraform import-gcp command"
+      ],
+      "question": "You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead. What are two things you must do to achieve this? (Choose two)",
+      "type": "multiple_select"
+    },
+    {
+      "answer": "True",
+      "question": "All stand backend types support state storage, locking, and remote operations like plan, apply, and destroy.",
+      "type": "true_false"
+    },
+    {
+      "answer": "run terraform refresh",
+      "options": [
+        "Run terraform refresh",
+        "It will happen automatically",
+        "Manually update the state file",
+        "Run terraform import"
+      ],
+      "question": "If you manually destroy infrastructure, what is the best practice reflecting this change in Terraform?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "Run apply and confirm the planned changes",
+      "options": [
+        "Run apply and confirm the planned changes",
+        "Inspect your Terraform state because you want to change it",
+        "Reinitialize because your configuration has changed",
+        "Inspect all Terraform outputs to make sure they are correct"
+      ],
+      "question": "You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change. What do you do next to make your infrastructure match your configuration?",
+      "type": "multiple_choice"
+    },
+    {
+      "answer": "Local",
+      "options": [
+        "Terraform Cloud",
+        "Consul",
+        "Remote",
+        "Local"
+      ],
+      "question": "Which backend does the Terraform CLI use by default?",
+      "type": "true_false"
+    }
+  ]
 }
