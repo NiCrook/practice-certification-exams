@@ -19,9 +19,9 @@ class Exam:
         self.used_questions = set()
         self.handlers = {
             'multiple_choice': handle_multiple_choice,
-            'multiple_selection': handle_multiple_selection,
+            'multiple_select': handle_multiple_selection,
             'true_false': handle_true_false,
-            'fill_in_the_blank': handle_fill_in_blank
+            'fill_in_blank': handle_fill_in_blank
         }
 
     def get_random_question(self):

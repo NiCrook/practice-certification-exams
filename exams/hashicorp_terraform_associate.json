@@ -75,7 +75,7 @@
         "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in the current state file."
       ],
       "question": "When using Terraform to deploy resources into Azure, which scenarios are true regarding state files? (Choose two.)",
-      "type": "multiple_selection"
+      "type": "multiple_select"
     },
     {
       "answer": "None of the above",
@@ -91,7 +91,7 @@
     },
     {
       "answer": "Declare a none_count input variable for child module",
-      "option": [
+      "options": [
         "Add node_count = var.node_count",
         "Declare the variable in a terraform.tfvars file",
         "Declare a node_count input variable for child module",
@@ -163,6 +163,7 @@
         "Based on the value provided to the -refresh command line argument",
         "None of the above"
       ],
+      "question": "What does terraform apply reflect changes in the cloud environment?",
       "type": "multiple_choice"
     },
     {
@@ -225,7 +226,7 @@
         "Local"
       ],
       "question": "Which backend does the Terraform CLI use by default?",
-      "type": "true_false"
+      "type": "multiple_choice"
     },
     {
       "answer": "False",
@@ -354,7 +355,7 @@
         "Self-describing infrastructure"
       ],
       "question": "Which of the following is not a key principle of infrastructure as code?",
-      "type": "multiple_selection"
+      "type": "multiple_select"
     },
     {
       "answer": [
@@ -368,7 +369,7 @@
         "[ for o in var.list : o.id ]"
       ],
       "question": "You have declared a variable called var.list which is a list of objects that all have an attribute id. Which options will produce a list of the IDs? (Choose two)",
-      "type": "multiple_selection"
+      "type": "multiple_select"
     },
     {
       "answer": "Commit a change to the VCS working directory and branch that the Terraform Cloud workspace is connected to",
