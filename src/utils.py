@@ -34,7 +34,7 @@ def handle_true_false(question: dict) -> str:
     return answer
 
 
-def handle_fill_in_the_blank(question: dict) -> str:
+def handle_fill_in_blank(question: dict) -> str:
     print(question['question'])
     answer = input("Your answer: ").strip()
     return answer

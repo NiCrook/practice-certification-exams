@@ -6,7 +6,7 @@ from src.utils import (
     handle_multiple_choice,
     handle_multiple_selection,
     handle_true_false,
-    handle_fill_in_the_blank
+    handle_fill_in_blank
 )
 
 
@@ -58,16 +58,16 @@ class TestQuestionHandlers(TestCase):
             answer = handle_true_false(question)
             self.assertEqual(answer, 'True')
 
-    def test_handle_fill_in_the_blank(self):
+    def test_handle_fill_in_blank(self):
         question = {
             'question': 'Infrastructure as ____.',
-            'type': 'fill_in_the_blank',
+            'type': 'fill_in_blank',
             'answer': 'Code'
         }
 
         user_input = ['Code']
         with patch('builtins.input', side_effect=mock_input(user_input)):
-            answer = handle_fill_in_the_blank(question)
+            answer = handle_fill_in_blank(question)
             self.assertEqual(answer, 'Code')
 
 

@@ -5,11 +5,11 @@ from src.utils import (
     handle_multiple_choice,
     handle_multiple_selection,
     handle_true_false,
-    handle_fill_in_the_blank
+    handle_fill_in_blank
 )
 
 
-class Quiz:
+class Exam:
     def __init__(self, exam_name_):
         self.exam_name = exam_name_
         self.exam = load_exam(exam_name_)
@@ -21,7 +21,7 @@ class Quiz:
             'multiple_choice': handle_multiple_choice,
             'multiple_selection': handle_multiple_selection,
             'true_false': handle_true_false,
-            'fill_in_the_blank': handle_fill_in_the_blank
+            'fill_in_the_blank': handle_fill_in_blank
         }
 
     def get_random_question(self):
@@ -74,12 +74,12 @@ class Quiz:
             if user_answer == correct_answer:
                 print("Correct!")
             else:
-                print(f"Incorrect! The correct answer(s): {', '.join(correct_answer)}")
+                print(f"Incorrect!\nThe correct answer(s): \n{',\n'.join(correct_answer)}")
         else:
             if user_answer == correct_answer:
                 print("Correct!")
             else:
-                print(f"Incorrect! The correct answer: {correct_answer}")
+                print(f"Incorrect!\nThe correct answer:\n{correct_answer}")
         print()
 
     def check_unanswered_questions(self):
@@ -91,5 +91,5 @@ class Quiz:
 
 if __name__ == '__main__':
     exam_name = input("Enter the exam name: ").strip()
-    quiz = Quiz(exam_name)
+    quiz = Exam(exam_name)
     quiz.start()
