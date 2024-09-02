@@ -180,6 +180,8 @@
     },
     {
       "answer": [
+        "Use the terraform import command for the existing VMs",
+        "Write terraform configuration for the existing VMs"
       ],
       "options": [
         "Provision new VMs using Terraform with the same VM names",
