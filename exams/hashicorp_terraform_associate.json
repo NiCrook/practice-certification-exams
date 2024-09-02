@@ -639,8 +639,8 @@
       "options": [
         "terraform plan to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure",
         "Write a Terraform configuration, run terraform show to view proposed changes, and terraform apply to create new infrastructure",
-        "terraform plan to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure",
-        "Write a Terraform configuration, run terraform init, run terraform plan to view planned infrastructure changes, and terraform apply to create new infrastructure"
+        "Write a Terraform configuration, run terraform init, run terraform plan to view planned infrastructure changes, and terraform apply to create new infrastructure",
+        "Run terraform destroy to remove existing infrastructure, then terraform apply to create new infrastructure"
       ],
       "question": "What is the workflow for deploying new infrastructure with Terraform?",
       "type": "multiple_choice"
