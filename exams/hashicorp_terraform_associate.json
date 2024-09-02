@@ -553,7 +553,7 @@
         "It's only available to paying customers",
         "All of the above"
       ],
-      "question": "How is the Terraform remote backend fiferent han other state backends such as S3, Consul, etc.?",
+      "question": "How is the Terraform remote backend different han other state backends such as S3, Consul, etc.?",
       "type": "multiple_choice"
     },
     {
