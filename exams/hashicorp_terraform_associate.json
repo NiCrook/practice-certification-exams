@@ -712,7 +712,7 @@
       "type": "fill_in_blank"
     },
     {
-      "answer": "They can't be used to loop through a list of values",
+      "answer": "Dynamic blocks can construct repeatable nested blocks",
       "options": [
         "They can't be used to loop through a list of values",
         "Dynamic blocks can construct repeatable nested blocks",
