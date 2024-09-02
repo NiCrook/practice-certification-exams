@@ -21,7 +21,7 @@
         "When you want Terraform to ignore a resource on the next apply.",
         "When you want Terraform to destroy all the infrastructure in your workspace."
       ],
-      "question": "When you want to force Terraform to destroy and recreate a resource on the next apply.",
+      "question": "Why would you use the terraform apply -replace=\"resource\" command?",
       "type": "multiple_choice"
     },
     {
