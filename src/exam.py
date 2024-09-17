@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from exam_loader import load_exam
 from random import choice as random_choice
 from src.utils import (
+    calculate_results,
     handle_multiple_choice,
     handle_multiple_selection,
     handle_true_false,
@@ -17,6 +18,8 @@ class Exam:
         self.time_duration = self.exam.get('time_duration')
         self.question_duration = self.exam.get('question_duration')
         self.used_questions = set()
+        self.answers = []
+        self.calculated_results = {}
         self.handlers = {
             'multiple_choice': handle_multiple_choice,
             'multiple_select': handle_multiple_selection,
@@ -38,11 +41,14 @@ class Exam:
         print(f"Starting the {self.exam_name} quiz...\n")
 
         start_time = datetime.now()
+        print(f'start time: {start_time}')
         end_time = start_time + timedelta(seconds=self.time_duration)
+        print(f'end time: {end_time}')
 
         question_count = 0
         while question_count < self.question_duration:
             current_time = datetime.now()
+            print(f'current time: {current_time}')
             if current_time > end_time:
                 print("Time is up!")
                 break
@@ -56,6 +62,14 @@ class Exam:
             question_count += 1
 
         self.check_unanswered_questions()
+        self.calculated_results = calculate_results(self.answers)
+
+        print(
+            "\nResults"
+            f"\nNumber of questions answered: {self.calculated_results['total_num_answers']}"
+            f"\nNumber of questions answered correctly: {self.calculated_results['num_answer_correct']}"
+            f"\nGrade: {self.calculated_results['results_percent']:.0f}%"
+        )
 
     def ask_question(self, question):
         q_type = question['type']
@@ -66,20 +80,24 @@ class Exam:
         user_answer = handler(question)
         self.check_answer(question['answer'], user_answer)
 
-    @staticmethod
-    def check_answer(correct_answer, user_answer):
+    def check_answer(self, correct_answer, user_answer):
         if isinstance(correct_answer, list):
             correct_answer = set(correct_answer)
             user_answer = set(user_answer)
             if user_answer == correct_answer:
                 print("Correct!")
+                self.answers.append('Correct')
             else:
                 print(f"Incorrect!\nThe correct answer(s): \n{',\n'.join(correct_answer)}")
+                self.answers.append('Incorrect')
         else:
             if user_answer == correct_answer:
                 print("Correct!")
+                self.answers.append('Correct')
             else:
                 print(f"Incorrect!\nThe correct answer:\n{correct_answer}")
+                self.answers.append('Incorrect')
+
         print()
 
     def check_unanswered_questions(self):

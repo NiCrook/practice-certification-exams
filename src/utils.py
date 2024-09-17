@@ -49,3 +49,19 @@ def handle_fill_in_blank(question: dict) -> str:
     print(question['question'])
     answer = input("Your answer: ").strip()
     return answer
+
+
+def calculate_results(answers: list) -> dict:
+    num_answer_correct = 0
+
+    for answer in answers:
+        if answer.lower() == 'correct':
+            num_answer_correct += 1
+
+    results_percent = (num_answer_correct / len(answers)) * 100
+
+    return {
+        'total_num_answers': len(answers),
+        'num_answer_correct': num_answer_correct,
+        'results_percent': results_percent,
+    }

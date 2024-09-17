@@ -3,6 +3,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from src.utils import (
+    calculate_results,
     handle_multiple_choice,
     handle_multiple_selection,
     handle_true_false,
@@ -69,6 +70,16 @@ class TestQuestionHandlers(TestCase):
         with patch('builtins.input', side_effect=mock_input(user_input)):
             answer = handle_fill_in_blank(question)
             self.assertEqual(answer, 'Code')
+
+    def test_calculate_results(self):
+        mockAnswers = ['Correct', 'Correct', 'Incorrect']
+
+        mockResults = calculate_results(mockAnswers)
+
+        assert len(mockResults) == 3
+        assert mockResults['total_num_answers'] == 3
+        assert mockResults['num_answer_correct'] == 2
+        assert mockResults['results_percent'] == (mockResults['num_answer_correct'] / mockResults['total_num_answers']) * 100
 
 
 if __name__ == '__main__':
