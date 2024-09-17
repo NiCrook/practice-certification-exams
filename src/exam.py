@@ -65,7 +65,7 @@ class Exam:
         self.calculated_results = calculate_results(self.answers)
 
         print(
-            "\nResults"
+            f"\nResults- Time taken: {datetime.now() - start_time}"
             f"\nNumber of questions answered: {self.calculated_results['total_num_answers']}"
             f"\nNumber of questions answered correctly: {self.calculated_results['num_answer_correct']}"
             f"\nGrade: {self.calculated_results['results_percent']:.0f}%"
