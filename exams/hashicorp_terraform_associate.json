@@ -3,7 +3,7 @@
   "question_duration": 57,
   "questions": [
     {
-      "answer": "True",
+      "answer": "False",
       "question": "Terraform can run on Windows or Linux, but it requires a Server version of the Windows operating system.",
       "type": "true_false"
     },
@@ -31,12 +31,12 @@
       "type": "multiple_choice"
     },
     {
-      "answer": "True",
+      "answer": "False",
       "question": "Setting the TF_LOG environment variable to DEBUG causes debug messages to be logged into syslog.",
       "type": "true_false"
     },
     {
-      "answer": "element(aws_instance.web, 2)",
+      "answer": "aws_instance.web[1]",
       "options": [
         "aws_instance.web[1].name",
         "aws_instance.web[1]",
@@ -65,9 +65,9 @@
     },
     {
       "answer": [
-    "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply.",
-    "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in the current state file."
-        ],
+        "When a change is made to the resources via the Azure Cloud Console, the current state file will not be updated.",
+        "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply."
+      ],
       "options": [
         "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply.",
         "When a change is made to the resources via the Azure Cloud Console, the current state file will not be updated.",
@@ -78,7 +78,7 @@
       "type": "multiple_select"
     },
     {
-      "answer": "None of the above",
+      "answer": "Optional inputs variables and default values",
       "options": [
         "Required input variables",
         "Optional inputs variables and default values",
@@ -155,7 +155,7 @@
       "type": "multiple_choice"
     },
     {
-      "answer": "None of the above",
+      "answer": "After updating the state file",
       "options": [
         "Immediately",
         "However long it takes the resource provider to fulfill the request",
@@ -658,7 +658,7 @@
     },
     {
       "answer": "State file",
-      "options": ["tfplan files", "Terraform binary", "Provider prugins", "State file"],
+      "options": ["tfplan files", "Terraform binary", "Provider plugins", "State file"],
       "question": "What does the default \"local\" Terraform backend store?",
       "type": "multiple_choice"
     },
