@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from exam_loader import load_exam
+from exam_loader import get_exam_names, load_exam
 from random import choice as random_choice
 from src.utils import (
     calculate_results,
@@ -13,7 +13,8 @@ from src.utils import (
 class Exam:
     def __init__(self, exam_name_):
         self.exam_name = exam_name_
-        self.exam = load_exam(exam_name_)
+        self.exam_dir = '../exams'
+        self.exam = load_exam(exam_name_, self.exam_dir)
         self.questions = self.exam.get('questions', [])
         self.time_duration = self.exam.get('time_duration')
         self.question_duration = self.exam.get('question_duration')
@@ -48,7 +49,6 @@ class Exam:
         question_count = 0
         while question_count < self.question_duration:
             current_time = datetime.now()
-            print(f'current time: {current_time}')
             if current_time > end_time:
                 print("Time is up!")
                 break
@@ -108,6 +108,9 @@ class Exam:
 
 
 if __name__ == '__main__':
+    exam_dir = '../exams'
+    print("Review available exams:")
+    print(get_exam_names(exam_dir))
     exam_name = input("Enter the exam name: ").strip()
     quiz = Exam(exam_name)
     quiz.start()

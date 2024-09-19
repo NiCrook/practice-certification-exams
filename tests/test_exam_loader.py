@@ -2,8 +2,9 @@ from json import load as json_load
 from os import listdir, path
 from unittest import TestCase
 from unittest import main as unittest_main
+from unittest.mock import patch
 
-from src.exam_loader import load_exam
+from src.exam_loader import get_exam_names, load_exam
 
 
 def load_exam_files(directory_path):
@@ -68,18 +69,27 @@ class TestExamLoader(TestCase):
                         print(f'Question: {question}')
                         self.assertIn(question['answer'], ['True', 'False'])
 
-    def test_load_exam__all_exams(self):
-        exams_dir = '../exams'
+    @patch('src.exam_loader.load_exam')
+    def test_load_exam__all_exams(self, test_exam_directory_path):
+        test_exam_directory_path.return_value = ['one.json', 'two.json']
 
-        for file_name in listdir(exams_dir):
+        for file_name in test_exam_directory_path:
             if file_name.endswith('.json') or file_name.endswith('.yaml'):
                 exam_name, _ = path.splitext(file_name)
 
                 try:
-                    exam_data = load_exam(exam_name)
+                    exam_data = load_exam(exam_name, test_exam_directory_path)
                     self.assertIsNotNone(exam_data, f"Failed to load exam data for '{exam_name}'")
                 except Exception as e:
                     self.fail(f"Loading exam file '{file_name}' failed with exception: {e}")
+
+    @patch('os.listdir')
+    def test_get_exam_names(self, test_exam_dir):
+        test_exam_dir.return_value = ['one.json', 'two.json']
+
+        result = get_exam_names('test/path')
+
+        assert result == ['one', 'two']
 
 
 if __name__ == '__main__':
